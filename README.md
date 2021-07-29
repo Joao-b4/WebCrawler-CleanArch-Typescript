@@ -12,7 +12,7 @@ At the moment the traveller fills the requested information the bot needs to sea
 timeframe.
 
 You will have to implement the API responsible for doing the searching part.
-The necessary information for the crawler is under the [Assets](#assets) session
+The necessary information for the crawler is under the [doc/Assets](#assets) session
 
 ## What you'll need to do:
 * Create a POST endpoint "/search"
@@ -86,7 +86,7 @@ Default port is set to `8080`
 * Crawl URL sample (change dates): 
 <pre>https://book.omnibees.com/hotelresults?CheckIn=23092021&CheckOut=24092021&Code=AMIGODODANIEL&NRooms=1&_askSI=d34b1c89-78d2-45f3-81ac-4af2c3edb220&ad=2&ag=-&c=2983&ch=0&diff=false&group_code=&lang=pt-BR&loyality_card=&utm_source=asksuite&q=5462#show-more-hotel-button</pre>
 * Help images:
-![sample_1](assets/sample_1.png)
+![sample_1](doc/assets/sample_1.png)
 
 ## Test rating
 What do we evaluate with this test?
