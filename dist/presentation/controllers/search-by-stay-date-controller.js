@@ -1,15 +1,18 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SearchByStayDateController = void 0;
-// import { SearchByStayDate } from '@/domain/usecases'
 const interfaces_1 = require("@/presentation/interfaces");
 class SearchByStayDateController {
-    //   constructor (private readonly lastRankingLoader: SearchByStayDate) {
-    //   }
-    async handle() {
+    constructor(usecase) {
+        this.usecase = usecase;
+    }
+    async handle(request) {
         try {
-            //   const ranking = await this.lastRankingLoader.call()
-            return interfaces_1.HttpResponseServerOk({});
+            // todo - adicionar middleware
+            const checkin = new Date(request.body.checkin);
+            const checkout = new Date(request.body.checkout);
+            const resultList = await this.usecase.call(checkin, checkout);
+            return interfaces_1.HttpResponseServerOk(resultList);
         }
         catch (error) {
             return interfaces_1.HttpResponseServerError(error);

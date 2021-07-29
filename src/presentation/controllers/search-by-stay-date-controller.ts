@@ -1,14 +1,17 @@
-// import { SearchByStayDate } from '@/domain/usecases'
-import { Controller, HttpResponse, HttpResponseServerError, HttpResponseServerOk } from '@/presentation/interfaces'
+import { ISearchByStayDate } from '@/domain/usecases'
+import { IController, HttpResponse, HttpRequest, HttpResponseServerError, HttpResponseServerOk } from '@/presentation/interfaces'
 
-export class SearchByStayDateController implements Controller {
-//   constructor (private readonly lastRankingLoader: SearchByStayDate) {
-//   }
+export class SearchByStayDateController implements IController {
+  constructor (private readonly usecase: ISearchByStayDate) {
+  }
 
-  async handle (): Promise<HttpResponse<[]>> {
+  async handle (request: HttpRequest): Promise<HttpResponse<[]>> {
     try {
-    //   const ranking = await this.lastRankingLoader.call()
-      return HttpResponseServerOk({})
+      // todo - adicionar middleware
+      const checkin = new Date(request.body.checkin)
+      const checkout = new Date(request.body.checkout)
+      const resultList = await this.usecase.call(checkin,checkout)
+      return HttpResponseServerOk(resultList)
     } catch (error) {
       return HttpResponseServerError(error)
     }

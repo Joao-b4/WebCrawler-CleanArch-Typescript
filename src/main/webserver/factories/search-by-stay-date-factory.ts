@@ -1,10 +1,14 @@
+import { CrawlerSearchDatasource } from '@/external/crawler-datasource'
+import { RoomRepository } from '@/infra/repositories/search-by-stay-date-repository'
 import { SearchByStayDateController } from '@/presentation/controllers/'
-import { Controller } from "@/presentation/interfaces"
+import { IController } from '@/presentation/interfaces'
+import { SearchByStayDate } from '@/domain/usecases'
 
-export const makeSearchByStayDateController = (): Controller => {
-    // dependency injection
-    // const repository = new FakeDbRankingRepository()
-    // const loader = new LastRankingLoaderService(repository)
-    return new SearchByStayDateController()
-  }
-  
+export const makeSearchByStayDateController = (): IController => {
+  // dependency injection
+  // const puppeteer  = new puppeteer
+  const datasource = new CrawlerSearchDatasource()
+  const repository = new RoomRepository(datasource)
+  const usecase = new SearchByStayDate(repository)
+  return new SearchByStayDateController(usecase)
+}
