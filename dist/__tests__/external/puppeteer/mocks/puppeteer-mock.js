@@ -1,6 +1,18 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.stubElementHandle = exports.stubPuppeteer = exports.stubBrowser = exports.stubPage = void 0;
+exports.stubElementHandle = exports.stubPuppeteer = exports.stubBrowser = exports.stubPage = exports.PageFunctionMock = exports.ScrapingResultMock = void 0;
+exports.ScrapingResultMock = {
+    data: [
+        {
+            name: 'Master',
+            price: 'R$ 975,65',
+            description: 'São 6 quartos luxuosos, sofisticados e decorados com requinte, além de localização privilegiada em nosso hotel. Alguns possuem mezanino e ou...',
+            image: 'https://media.omnibees.com/Images/5462/RoomTypes/192355.jpg'
+        }
+    ]
+};
+const PageFunctionMock = async (page) => exports.ScrapingResultMock;
+exports.PageFunctionMock = PageFunctionMock;
 exports.stubPage = {
     async goto(url) {
         return Promise.resolve();

@@ -4,5 +4,5 @@ import { adaptRoute } from '@/main/webserver/adapters'
 import { validateStayDate } from '../middlewares'
 
 export default (router: Router): void => {
-  router.post('/search', [validateStayDate],adaptRoute(makeSearchByStayDateController()))
+  router.post('/search', [validateStayDate], adaptRoute(makeSearchByStayDateController()))
 }

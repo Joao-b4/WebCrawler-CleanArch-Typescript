@@ -1,6 +1,5 @@
 import { PuppeteerAdapter } from '@/external/puppeteer/puppeteer-adapter'
-import { PageFunctionMock, ScrapingResultMock } from './mocks/page-function-mock'
-import { stubBrowser, stubPage } from './mocks/puppeteer-mock'
+import { stubBrowser, stubPage, PageFunctionMock, ScrapingResultMock } from './mocks/puppeteer-mock'
 
 jest.mock('puppeteer', () => ({
   launch () {

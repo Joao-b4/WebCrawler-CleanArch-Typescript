@@ -1,11 +1,13 @@
 import { IBrowser, ScrapingResult } from '@/data/models/browser'
 import puppeteer, { Browser, Page } from 'puppeteer'
 
+type PageFunction = (page: Page) => Promise<ScrapingResult>
+
 export class PuppeteerAdapter implements IBrowser {
   browser: Browser
   page: Page
 
-  constructor (private readonly pageFunction: Function) {
+  constructor (private readonly pageFunction: PageFunction) {
   }
 
   async bootstrap (url: string): Promise<void> {

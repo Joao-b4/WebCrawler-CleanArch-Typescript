@@ -8,13 +8,13 @@ class SearchHotelRoomByStayDate {
     }
     async call(checkin, checkout) {
         if (!checkin || !checkout) {
-            throw new search_error_1.SearchParameterInvalid('empty');
+            throw new search_error_1.SearchParameterInvalid('emptyParameters');
         }
         if (checkin < new Date()) {
-            throw new search_error_1.SearchParameterInvalid('checkin');
+            throw new search_error_1.SearchParameterInvalid('checkinInvalid');
         }
         if (checkout <= checkin) {
-            throw new search_error_1.SearchParameterInvalid('checkout');
+            throw new search_error_1.SearchParameterInvalid('checkoutInvalid');
         }
         const hotelRoomModel = this.hotelRoomRepository.searchByStayDate(checkin, checkout);
         return hotelRoomModel;

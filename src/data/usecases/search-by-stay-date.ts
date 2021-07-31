@@ -9,13 +9,13 @@ export class SearchHotelRoomByStayDate implements ISearchHotelRoomByStayDate {
 
   async call (checkin: Date, checkout: Date): Promise<HotelRoom[]> {
     if (!checkin || !checkout) {
-      throw new SearchParameterInvalid('empty')
+      throw new SearchParameterInvalid('emptyParameters')
     }
     if (checkin < new Date()) {
-      throw new SearchParameterInvalid('checkin')
+      throw new SearchParameterInvalid('checkinInvalid')
     }
     if (checkout <= checkin) {
-      throw new SearchParameterInvalid('checkout')
+      throw new SearchParameterInvalid('checkoutInvalid')
     }
     const hotelRoomModel = this.hotelRoomRepository.searchByStayDate(checkin, checkout)
     return hotelRoomModel

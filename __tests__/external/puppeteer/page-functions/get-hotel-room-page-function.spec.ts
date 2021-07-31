@@ -1,41 +1,50 @@
 import { getHotelRoomPageFunction } from '@/external/puppeteer/page-functions'
-import puppeteer, { Browser, Page } from 'puppeteer'
-import { ScrapingResultMock } from '../mocks/page-function-mock'
+// import puppeteer, { Browser, Page } from 'puppeteer'
+import { stubBrowser, stubPage, ScrapingResultMock } from '../mocks/puppeteer-mock'
+import { JSDOM } from 'jsdom'
+import { roomDomMock } from '../mocks/room-dom-mock'
 
-jest.setTimeout(5000000)
+jest.setTimeout(500000)
 
-type ContextPuppeteerBrowser = {
-  page: Page
-  browser: Browser
-}
+const dom = new JSDOM()
+global.document = dom.window.document
+global.window = dom.window
 
-const setupContextPuppeteerBrowser = async (): Promise<ContextPuppeteerBrowser> => {
-  const browser = await puppeteer.launch({
-    headless: true
-  })
-
-  const page = await browser.newPage()
-  await page.goto('https://book.omnibees.com/hotelresults?CheckIn=23092021&CheckOut=24092021&Code=AMIGODODANIEL&NRooms=1&_askSI=d34b1c89-78d2-45f3-81ac-4af2c3edb220&ad=2&ag=-&c=2983&ch=0&diff=false&group_code=&lang=pt-BR&loyality_card=&utm_source=asksuite&q=5462#show-more-hotel-button%3C/pre%3E')
-  const context: ContextPuppeteerBrowser = {
-    page,
-    browser
-  }
-  return context
+const context = {
+  page: stubPage,
+  browser: stubBrowser
 }
 
 describe('GetHotelRoom PageFunction', () => {
-  let context: ContextPuppeteerBrowser
-
-  beforeAll(async () => {
-    context = await setupContextPuppeteerBrowser()
-  })
   afterAll(async () => {
     await context.browser.close()
   })
 
-  test('Should be return ', async () => {
-    const result = await getHotelRoomPageFunction(context.page)
+  test('Should be return ScrapingResult with a HotelRom Collection', async () => {
+    jest.spyOn(document, 'querySelectorAll').mockImplementation((selector: string) => {
+      if (selector === '.roomrate:not(.d-none)') {
+        const roomrate = document.createElement('div')
+        roomrate.innerHTML = roomDomMock()
+        document.body.appendChild(roomrate)
+        return roomrate.querySelectorAll(selector)
+      }
+    })
 
+    const result = await getHotelRoomPageFunction(context.page)
     expect(result).toEqual(ScrapingResultMock)
+  })
+
+  test('Should be return empty ScrapingResult', async () => {
+    jest.spyOn(document, 'querySelectorAll').mockImplementation((selector: string) => {
+      if (selector === '.roomrate:not(.d-none)') {
+        const roomrate = document.createElement('div')
+        roomrate.innerHTML = ''
+        document.body.appendChild(roomrate)
+        return roomrate.querySelectorAll(selector)
+      }
+    })
+
+    const result = await getHotelRoomPageFunction(context.page)
+    expect(result).toEqual({ data: [] })
   })
 })

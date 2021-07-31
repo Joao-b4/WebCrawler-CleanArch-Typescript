@@ -18,7 +18,7 @@ describe('SearchByStayDate Middleware', () => {
     const httpResponse = await searchByStayDateMiddleware.handle(request)
     expect(httpResponse.statusCode).toEqual(400)
   })
-  test('Should return 400 if checkin and checkout is not date', async () => {
+  test('Should return 400 if checkin and checkout is not date format', async () => {
     const searchByStayDateMiddleware = new SearchByStayDateMiddleware()
     const request = mockRequest()
     request.body = { checkin: '-', checkout: '-' }
@@ -26,7 +26,7 @@ describe('SearchByStayDate Middleware', () => {
     const httpResponse = await searchByStayDateMiddleware.handle(request)
     expect(httpResponse.statusCode).toEqual(400)
   })
-  test('Should return 200 if checkin and checkout is date', async () => {
+  test('Should return 200 if checkin and checkout is date format', async () => {
     const searchByStayDateMiddleware = new SearchByStayDateMiddleware()
     const request = mockRequest()
     request.body = { checkin: '2021-07-01', checkout: '2021-07-03' }

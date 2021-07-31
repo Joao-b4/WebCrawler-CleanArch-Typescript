@@ -11,8 +11,8 @@
     "lint": "eslint --ext .ts,.js src/",
     "lint:fix": "eslint --ext .ts,.js --fix src/",
     "test": "jest",
-    "test:unit": "npm test -- --watch -c jest-unit-config.js",
-    "test:integration": "npm test -- --watch -c jest-integration-config.js"
+    "test:unit": "npm test -- --watchAll -c jest-unit-config.js",
+    "test:integration": "npm test -- --watchAll -c jest-integration-config.js"
   },
   "author": "João Fontoura",
   "license": "ISC",

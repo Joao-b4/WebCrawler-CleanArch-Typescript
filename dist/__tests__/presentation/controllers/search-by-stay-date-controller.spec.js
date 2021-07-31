@@ -19,7 +19,7 @@ const makeSut = () => {
     };
 };
 describe('SearchByStayDate Controller', () => {
-    test('Should be HotelRoom Colletion', async () => {
+    test('Should return HotelRoom Colletion', async () => {
         const { sut, searchHotelRoomByStayDate } = makeSut();
         const checkin = new Date();
         const checkout = new Date();

@@ -12,30 +12,30 @@ const makeSut = () => {
     };
 };
 describe('SearchByStayDate Usecase', () => {
-    test('Should be throw SearchParameterInvalid.message(checkin)', async () => {
+    test('Should be throw SearchParameterInvalid.message(checkinInvalid)', async () => {
         const { sut } = makeSut();
         const checkin = new Date();
         const checkout = new Date();
         checkin.setDate(checkin.getDate() - 1);
         checkout.setDate(checkin.getDate() + 2);
         const promise = sut.call(checkin, checkout);
-        await expect(promise).rejects.toThrowError(new search_error_1.SearchParameterInvalid('checkin'));
+        await expect(promise).rejects.toThrowError(new search_error_1.SearchParameterInvalid('checkinInvalid'));
     });
-    test('Should be throw SearchParameterInvalid.message(checkout)', async () => {
+    test('Should be throw SearchParameterInvalid.message(checkoutInvalid)', async () => {
         const { sut } = makeSut();
         const checkin = new Date();
         const checkout = new Date();
         checkin.setDate(checkin.getDate() + 2);
         checkout.setDate(checkin.getDate() + 1);
         const promise = sut.call(checkin, checkout);
-        await expect(promise).rejects.toThrowError(new search_error_1.SearchParameterInvalid('checkout'));
+        await expect(promise).rejects.toThrowError(new search_error_1.SearchParameterInvalid('checkoutInvalid'));
     });
     test('Should be HotelRoom Colletion', async () => {
         const { sut, hotelRoomRepository } = makeSut();
         const checkin = new Date();
         const checkout = new Date();
         checkin.setDate(checkin.getDate() + 1);
-        checkout.setDate(checkin.getDate() + 2);
+        checkout.setDate(checkout.getDate() + 2);
         const usecase = await sut.call(checkin, checkout);
         expect(usecase).toEqual(hotelRoomRepository.result);
     });

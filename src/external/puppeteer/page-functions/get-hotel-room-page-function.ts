@@ -17,7 +17,6 @@ export const getHotelRoomPageFunction = async (page: Page): Promise<ScrapingResu
       }
       scrapingResult.data.push(room)
     })
-
     return scrapingResult
   })
 }
