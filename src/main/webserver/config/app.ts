@@ -1,10 +1,8 @@
-import { setupRoutes } from '@/main/webserver/config'
 import express from 'express'
+import setupMiddlewares from './middlewares'
+import setupRoutes from './routes'
 
 const app = express()
-app.use(express.json())
-app.use(express.urlencoded({
-  extended: true
-}))
+setupMiddlewares(app)
 setupRoutes(app)
 export default app

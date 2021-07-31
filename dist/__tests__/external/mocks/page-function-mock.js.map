@@ -1,0 +1,1 @@
+{"version":3,"file":"page-function-mock.js","sourceRoot":"","sources":["../../../../__tests__/external/mocks/page-function-mock.ts"],"names":[],"mappings":";;;AACa,QAAA,kBAAkB,GAAG,EAAE,IAAI,EAAE,CAAC,EAAE,IAAI,EAAE,OAAO,EAAC,WAAW,EAAE,kBAAkB,EAAC,KAAK,EAAE,oBAAoB,EAAC,KAAK,EAAE,WAAW,EAAE,CAAC,EAAE,CAAA;AACvI,MAAM,gBAAgB,GAAG,GAAmB,EAAE,CAAC,0BAAkB,CAAA;AAA3D,QAAA,gBAAgB,oBAA2C"}

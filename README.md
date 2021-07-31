@@ -8,7 +8,7 @@ First of all, we have this nice express.js boilerplate project to assist you so 
 ## Briefing
 The traveller comes to our bot and asks for "Price quotation". Then the bot asks for the dates the traveller wants to 
 stay at the bot's hotel.
-At the moment the traveller fills the requested information the bot needs to search the prices for each room available in the check-in/check-out 
+At the moment the traveller fills the requested information the bot needs to search the prices for each HotelRoom available in the check-in/check-out 
 timeframe.
 
 You will have to implement the API responsible for doing the searching part.
@@ -34,14 +34,14 @@ The necessary information for the crawler is under the [doc/Assets](#assets) ses
         }
         </pre>
         
-    * The expected result is an array of rooms:
+    * The expected result is an array of HotelRooms:
     
         <pre>
         [{
-            "name": string, // Room name
-            "description": string,  // Room description
-            "price": string, // Room daily price
-            "image": string, // Room main photo
+            "name": string, // HotelRoom name
+            "description": string,  // HotelRoom description
+            "price": string, // HotelRoom daily price
+            "image": string, // HotelRoom main photo
         }]
         </pre>
         
@@ -49,14 +49,14 @@ The necessary information for the crawler is under the [doc/Assets](#assets) ses
         
         <pre>
         [{
-            "name": "Standard Room",
-            "description": "Ideal for relaxing. The rooms...", 
+            "name": "Standard HotelRoom",
+            "description": "Ideal for relaxing. The HotelRooms...", 
             "price": "R$ 715,00",
             "image": "https://myreservations.omnibees.com/Handlers/ImageLoader.ashx?sz=250x166&imageID=189952.jpg",
         },
         {
             "name": "Master",
-            "description": "There are 6 luxurious rooms...", 
+            "description": "There are 6 luxurious HotelRooms...", 
             "price": "R$ 1.115,30",
             "image": "https://myreservations.omnibees.com/Handlers/ImageLoader.ashx?sz=250x166&imageID=192355.jpg",
         }]
@@ -84,7 +84,7 @@ Default port is set to `8080`
 
 ## Assets
 * Crawl URL sample (change dates): 
-<pre>https://book.omnibees.com/hotelresults?CheckIn=23092021&CheckOut=24092021&Code=AMIGODODANIEL&NRooms=1&_askSI=d34b1c89-78d2-45f3-81ac-4af2c3edb220&ad=2&ag=-&c=2983&ch=0&diff=false&group_code=&lang=pt-BR&loyality_card=&utm_source=asksuite&q=5462#show-more-hotel-button</pre>
+<pre>https://book.omnibees.com/hotelresults?CheckIn=23092021&CheckOut=24092021&Code=AMIGODODANIEL&NHotelRooms=1&_askSI=d34b1c89-78d2-45f3-81ac-4af2c3edb220&ad=2&ag=-&c=2983&ch=0&diff=false&group_code=&lang=pt-BR&loyality_card=&utm_source=asksuite&q=5462#show-more-hotel-button</pre>
 * Help images:
 ![sample_1](doc/assets/sample_1.png)
 

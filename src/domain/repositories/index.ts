@@ -1,1 +1,1 @@
-export * from './room-repository-interface'
+export * from './hotel-room-repository-interface'

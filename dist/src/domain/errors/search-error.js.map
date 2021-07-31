@@ -1,0 +1,1 @@
+{"version":3,"file":"search-error.js","sourceRoot":"","sources":["../../../../src/domain/errors/search-error.ts"],"names":[],"mappings":";;;AAAA,MAAa,WAAY,SAAQ,KAAK;IACpC,YAAa,OAAgB;QAC3B,KAAK,CAAC,aAAa,CAAC,CAAA;QACpB,IAAI,CAAC,IAAI,GAAG,aAAa,CAAA;QACzB,IAAI,CAAC,OAAO,GAAG,OAAO,IAAI,EAAE,CAAA;IAC9B,CAAC;CACF;AAND,kCAMC;AAED,MAAa,sBAAuB,SAAQ,WAAW;CAAG;AAA1D,wDAA0D"}
