@@ -23,7 +23,7 @@ describe('SearchByStayDate Usecase', () => {
     const checkout = new Date()
 
     checkin.setDate(checkin.getDate() - 1)
-    checkout.setDate(checkin.getDate() + 2)
+    checkout.setDate(checkout.getDate() + 2)
 
     const promise = sut.call(checkin,checkout)
     await expect(promise).rejects.toThrowError(new SearchParameterInvalid('checkinInvalid'))
@@ -34,7 +34,7 @@ describe('SearchByStayDate Usecase', () => {
     const checkout = new Date()
 
     checkin.setDate(checkin.getDate() + 2)
-    checkout.setDate(checkin.getDate() + 1)
+    checkout.setDate(checkout.getDate() + 1)
 
     const promise = sut.call(checkin,checkout)
     await expect(promise).rejects.toThrowError(new SearchParameterInvalid('checkoutInvalid'))

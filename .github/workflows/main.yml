@@ -27,7 +27,7 @@ jobs:
       - name: Install modules
         run: npm i
       - name: Run tests
-        run: npm run test
+        run: npm run test:unit
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
